@@ -6,9 +6,9 @@ import './Header.css';
 
 const Header = () => {
     const nav = [
-        <li id='nav-item'><NavLink to='/'>Home</NavLink></li>,
-        <li id='nav-item'><NavLink to='/dashboard'>Dashboard</NavLink></li>,
-        <li id='nav-item'><NavLink to='contact'>Contact</NavLink></li>
+        <li id='nav-item' className='text-lg'><NavLink to='/'>Home</NavLink></li>,
+        <li id='nav-item' className='text-lg'><NavLink to='/dashboard'>Dashboard</NavLink></li>,
+        <li id='nav-item' className='text-lg'><NavLink to='contact'>Contact</NavLink></li>
     ]
     return (
         <div>
