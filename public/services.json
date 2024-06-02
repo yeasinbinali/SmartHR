@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "Pattern Making",
+        "description": "Creation of precise garment patterns based on design specifications, ensuring accurate fit and style for mass production.",
+        "image": ""
+    },
+    {
+        "id": 2,
+        "name": "Fabric Sourcing",
+        "description": "Procurement of high-quality fabrics and materials from reliable suppliers to meet the specific needs of each garment production project.",
+        "image": ""
+    },
+    {
+        "id": 3,
+        "name": "Cutting and Sewing",
+        "description": "Professional cutting and sewing services using advanced machinery to ensure precise and efficient garment assembly.",
+        "image": ""
+    },
+    {
+        "id": 4,
+        "name": "Quality Control",
+        "description": "Comprehensive quality control checks at various stages of production to ensure garments meet the required standards and specifications.",
+        "image": ""
+    },
+    {
+        "id": 5,
+        "name": "Embellishment and Printing",
+        "description": "Application of decorative elements such as embroidery, screen printing, and heat transfers to enhance garment designs.",
+        "image": ""
+    },
+    {
+        "id": 6,
+        "name": "Packaging and Distribution",
+        "description": "Efficient packaging of finished garments and coordination of logistics for timely delivery to retailers, wholesalers, or direct consumers.",
+        "image": ""
+    }
+]
