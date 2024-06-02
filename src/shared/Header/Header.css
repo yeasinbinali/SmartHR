@@ -1,0 +1,4 @@
+#nav-item a.active {
+    border-bottom: 2px solid #FC6075;
+    padding: 10px;
+}
