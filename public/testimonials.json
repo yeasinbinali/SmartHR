@@ -2,42 +2,48 @@
     {
         "id": 1,
         "name": "Emily Johnson",
-        "user_image": "https://example.com/images/emily_johnson.jpg",
+        "country": "Sydney, Australia",
+        "user_image": "https://i.ibb.co/tc5cBJ1/portrait-outdoors-business-man-smiles-23-2148763856.jpg",
         "comment": "The quality of the garments is outstanding! The attention to detail in the stitching and fabric is impressive.",
         "rating": 5
     },
     {
         "id": 2,
         "name": "Michael Brown",
-        "user_image": "https://example.com/images/michael_brown.jpg",
+        "country": "Kathmandu, Nepal",
+        "user_image": "https://i.ibb.co/LgFC1Ct/elegant-man-with-folded-arms-1262-727.jpg",
         "comment": "Excellent service from start to finish. The team was very professional and delivered on time.",
         "rating": 4
     },
     {
         "id": 3,
         "name": "Sophia Martinez",
-        "user_image": "https://example.com/images/sophia_martinez.jpg",
+        "country": "San Francisco",
+        "user_image": "https://i.ibb.co/DzyWRBv/businessman-black-suit-with-tie-posing-114579-15876.jpg",
         "comment": "Highly recommend this company! They sourced the best fabrics and the final products exceeded our expectations.",
         "rating": 5
     },
     {
         "id": 4,
         "name": "David Smith",
-        "user_image": "https://example.com/images/david_smith.jpg",
+        "country": "New York, USA",
+        "user_image": "https://i.ibb.co/mDQrcdx/portrait-handsome-businessman-business-environment-53419-5922.jpg",
         "comment": "Great experience working with the team. The garments were perfect, and the quality control process is thorough.",
         "rating": 4
     },
     {
         "id": 5,
         "name": "Olivia Taylor",
-        "user_image": "https://example.com/images/olivia_taylor.jpg",
+        "country": "Toronto, Canada",
+        "user_image": "https://i.ibb.co/X80db7F/thoughtful-senior-businessman-portrait-1262-1636.jpg",
         "comment": "The embellishment and printing services added a unique touch to our designs. Very satisfied with the results.",
         "rating": 5
     },
     {
         "id": 6,
         "name": "James Wilson",
-        "user_image": "https://example.com/images/james_wilson.jpg",
+        "country": "Wales, England",
+        "user_image": "https://i.ibb.co/X2MhmvQ/businessman-with-crossed-arms-23-2147996582.jpg",
         "comment": "The packaging and distribution were handled very professionally. Our orders arrived in perfect condition.",
         "rating": 4
     }

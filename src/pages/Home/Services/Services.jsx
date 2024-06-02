@@ -1,15 +1,17 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Heading from '../../../components/Heading/Heading';
 
 const Services = () => {
     const [services, setServices] = useState([]);
 
-    axios.get('services.json')
-        .then(res => {
-            const data = res.data;
-            setServices(data);
-        })
+    useEffect(() => {
+        axios.get('services.json')
+            .then(res => {
+                const data = res.data;
+                setServices(data);
+            })
+    }, [])
 
     return (
         <div className='my-20'>
