@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "Emily Johnson",
+        "user_image": "https://example.com/images/emily_johnson.jpg",
+        "comment": "The quality of the garments is outstanding! The attention to detail in the stitching and fabric is impressive.",
+        "rating": 5
+    },
+    {
+        "id": 2,
+        "name": "Michael Brown",
+        "user_image": "https://example.com/images/michael_brown.jpg",
+        "comment": "Excellent service from start to finish. The team was very professional and delivered on time.",
+        "rating": 4
+    },
+    {
+        "id": 3,
+        "name": "Sophia Martinez",
+        "user_image": "https://example.com/images/sophia_martinez.jpg",
+        "comment": "Highly recommend this company! They sourced the best fabrics and the final products exceeded our expectations.",
+        "rating": 5
+    },
+    {
+        "id": 4,
+        "name": "David Smith",
+        "user_image": "https://example.com/images/david_smith.jpg",
+        "comment": "Great experience working with the team. The garments were perfect, and the quality control process is thorough.",
+        "rating": 4
+    },
+    {
+        "id": 5,
+        "name": "Olivia Taylor",
+        "user_image": "https://example.com/images/olivia_taylor.jpg",
+        "comment": "The embellishment and printing services added a unique touch to our designs. Very satisfied with the results.",
+        "rating": 5
+    },
+    {
+        "id": 6,
+        "name": "James Wilson",
+        "user_image": "https://example.com/images/james_wilson.jpg",
+        "comment": "The packaging and distribution were handled very professionally. Our orders arrived in perfect condition.",
+        "rating": 4
+    }
+]

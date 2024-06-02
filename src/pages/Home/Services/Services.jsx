@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Heading from '../../../components/Heading/Heading';
 
 const Services = () => {
-    const [services, setServices] = useState('');
+    const [services, setServices] = useState([]);
 
     axios.get('services.json')
         .then(res => {
