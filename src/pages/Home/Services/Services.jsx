@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Heading from '../../../components/Heading/Heading';
+import GridCard from '../../../components/GridCard/GridCard';
 
 const Services = () => {
     const [services, setServices] = useState([]);
@@ -21,11 +22,7 @@ const Services = () => {
             ></Heading>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                 {
-                    services.map(service => <div className='border-2 border-[whitesmoke] bg-[whitesmoke] px-7'>
-                        <img className='w-[350px] h-[250px] mx-auto brightness-95' src={service.image} alt="service" />
-                        <h1 className='text-2xl font-bold my-2'>{service.name}</h1>
-                        <p className='mb-5'>{service.description}</p>
-                    </div>)
+                    services.map((service) => <GridCard name={service.name} description={service.description} image={service.image}></GridCard>)
                 }
             </div>
         </div>
