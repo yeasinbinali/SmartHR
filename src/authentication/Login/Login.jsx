@@ -6,7 +6,7 @@ import { authContext } from '../../providers/AuthProvider';
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
-    const { signInUser } = useContext(authContext);
+    const { signInUser, googleSignIn } = useContext(authContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -22,8 +22,18 @@ const Login = () => {
             .catch(error => {
                 console.log(error.message);
             })
-
     }
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(res => {
+                console.log(res.user);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
+    
     return (
         <div className='flex justify-between items-center gap-10 mt-10 mb-20'>
             <div className='w-[40%] mx-auto'>
@@ -44,7 +54,7 @@ const Login = () => {
                 </form>
                 <p className='my-5 text-center'>New to SmartHR ? <Link className='text-main' to='/register'>Go to Register</Link></p>
                 <div className='flex justify-center'>
-                    <FcGoogle className='text-3xl' />
+                    <FcGoogle onClick={handleGoogleSignIn} className='text-3xl' />
                 </div>
             </div>
         </div>

@@ -3,8 +3,11 @@ import { useForm } from "react-hook-form"
 import { Link } from 'react-router-dom';
 import { authContext } from '../../providers/AuthProvider';
 
+// const image_hosting_key = 'd4f75cbd1e84a7835c536036c7e5f01b';
+// const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+
 const Register = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit,  formState: { errors } } = useForm();
     const { createUser } = useContext(authContext);
 
     const onSubmit = (data) => {
@@ -59,7 +62,12 @@ const Register = () => {
                     </div>
                     <div className='w-full mx-auto'>
                         <label>Password</label><br />
-                        <input required placeholder='Write your password' type='password' className='border-2 border-[whitesmoke] w-[100%]' {...register("password")} />
+                        <input required placeholder='Write your password' type='password' className='border-2 border-[whitesmoke] w-[100%]' {...register("password", {
+                            minLength: 6,
+                            pattern: /^(?=.*?[A-Z])(?=.*?[#?!@$%^&*-])/
+                        })} />
+                        {errors.password?.type === "minLength" && <p>Password must be 6 characters</p>}
+                        {errors.password?.type === "pattern" && <p>Password must have one capital letter and one special character(!, @, #, %, &, *)</p>}
                     </div>
                 </div>
                 <input className='btn bg-primary text-white w-full py-2 mt-5' type="submit" />
