@@ -1,5 +1,7 @@
 import React from 'react';
 import { useForm } from "react-hook-form"
+import { FcGoogle } from "react-icons/fc";
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
@@ -7,7 +9,7 @@ const Login = () => {
         console.log(data)
     }
     return (
-        <div className='flex justify-between items-center gap-10'>
+        <div className='flex justify-between items-center gap-10 mt-10 mb-20'>
             <div className='w-[40%] mx-auto'>
                 <img src="https://i.ibb.co/1rHpdYk/user-verification-unauthorized-access-prevention-private-account-authentication-cyber-security-peopl.jpg" alt="" />
             </div>
@@ -24,6 +26,10 @@ const Login = () => {
                     </div>
                     <input className='btn bg-primary text-white w-full py-2 mt-5' type="submit" />
                 </form>
+                <p className='my-5 text-center'>New to SmartHR ? <Link className='text-main' to='/register'>Go to Register</Link></p>
+                <div className='flex justify-center'>
+                    <FcGoogle className='text-3xl' />
+                </div>
             </div>
         </div>
     );
