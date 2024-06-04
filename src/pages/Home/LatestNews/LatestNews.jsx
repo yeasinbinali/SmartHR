@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Heading from '../../../components/Heading/Heading';
-import axios from 'axios';
 import GridCard from '../../../components/GridCard/GridCard';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 const LatestNews = () => {
     const [latestNews, setLatestNews] = useState([]);
+    const axiosPublic = useAxiosPublic();
 
-    useEffect(() => {
-        axios.get('news.json')
-            .then(res => {
-                const data = res.data;
-                setLatestNews(data);
-            })
-    }, [])
+    axiosPublic.get('/news')
+        .then(res => {
+            setLatestNews(res.data);
+        })
+        .catch(error => {
+            console.error(error.message);
+        })
 
     return (
         <div className='mb-20'>

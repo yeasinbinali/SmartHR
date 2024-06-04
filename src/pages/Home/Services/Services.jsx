@@ -1,18 +1,19 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Heading from '../../../components/Heading/Heading';
 import GridCard from '../../../components/GridCard/GridCard';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 const Services = () => {
     const [services, setServices] = useState([]);
+    const axiosPublic = useAxiosPublic();
 
-    useEffect(() => {
-        axios.get('services.json')
-            .then(res => {
-                const data = res.data;
-                setServices(data);
-            })
-    }, [])
+    axiosPublic.get('/services')
+        .then(res => {
+            setServices(res.data);
+        })
+        .catch(error => {
+            console.error(error.message);
+        })
 
     return (
         <div className='my-20'>

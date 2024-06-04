@@ -44,11 +44,11 @@ const Login = () => {
                     <h1 className='text-5xl font-bold text-center mb-10'>Login</h1>
                     <div className='w-full mx-auto'>
                         <label>Email</label><br />
-                        <input placeholder='Write your email' type='email' className='border-2 border-[whitesmoke] w-[100%]' {...register("email")} />
+                        <input placeholder='Write your email' type='email' className='border-[1px] border-black w-[100%]' {...register("email")} />
                     </div>
                     <div className='w-full mx-auto mt-5'>
                         <label>Password</label><br />
-                        <input placeholder='Write your password' type='password' className='border-2 border-[whitesmoke] w-[100%]' {...register("password")} />
+                        <input placeholder='Write your password' type='password' className='border-[1px] border-black w-[100%]' {...register("password")} />
                     </div>
                     <input className='btn bg-primary text-white w-full py-2 mt-5' type="submit" />
                 </form>

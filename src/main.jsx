@@ -9,6 +9,7 @@ import Register from './authentication/Register/Register.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard.jsx';
 import PrivateRoute from './route/PrivateRoute.jsx';
+import Worksheet from './pages/Dashboard/EmployeeDashboard/Worksheet/Worksheet.jsx';
 
 const router = createBrowserRouter([
   {
@@ -31,15 +32,21 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
-  }
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    children: [
+      {
+        path: '/dashboard',
+        element: <Worksheet></Worksheet>
+      }
+    ]
+  },
 ]);
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-      <div className='max-w-screen-xl mx-auto'>
+      <div className='max-w-screen-xl mx-auto px-5'>
         <RouterProvider router={router} />
       </div>
     </AuthProvider>

@@ -1,12 +1,12 @@
 import React from 'react';
 import DashboardSidebar from '../DashboardSidebar/DashboardSidebar';
-import DashboardContent from '../DashboardContent/DashboardContent';
+import { Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
     return (
         <div className='flex'>
             <DashboardSidebar></DashboardSidebar>
-            <DashboardContent></DashboardContent>
+            <Outlet></Outlet>
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Heading from '../../../components/Heading/Heading';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -10,19 +10,20 @@ import './Testimonials.css';
 
 // import required modules
 import { Pagination } from 'swiper/modules';
-import axios from 'axios';
 import { FaStar } from "react-icons/fa";
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 const Testimonials = () => {
     const [testimonials, setTestimonials] = useState([]);
+    const axiosPublic = useAxiosPublic();
 
-    useEffect(() => {
-        axios.get('testimonials.json')
-            .then(res => {
-                const data = res.data;
-                setTestimonials(data);
-            })
-    }, [])
+    axiosPublic.get('/testimonials')    
+        .then(res => {
+            setTestimonials(res.data);
+        })
+        .catch(error => {
+            console.error(error.message);
+        })
 
     return (
         <div className='mb-20'>
