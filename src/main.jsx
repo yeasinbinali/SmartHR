@@ -6,6 +6,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from './pages/Home/Home/Home.jsx';
 import Login from './authentication/Login/Login.jsx';
 import Register from './authentication/Register/Register.jsx';
+import AuthProvider from './providers/AuthProvider.jsx';
+import Dashboard from './pages/Dashboard/Dashboard/Dashboard.jsx';
+import PrivateRoute from './route/PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -26,13 +29,19 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: '/dashboard',
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+  }
 ]);
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <div className='max-w-screen-xl mx-auto'>
-      <RouterProvider router={router} />
-    </div>
+    <AuthProvider>
+      <div className='max-w-screen-xl mx-auto'>
+        <RouterProvider router={router} />
+      </div>
+    </AuthProvider>
   </React.StrictMode>,
 )

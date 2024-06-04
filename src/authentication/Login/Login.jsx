@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form"
 import { FcGoogle } from "react-icons/fc";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { authContext } from '../../providers/AuthProvider';
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
+    const { signInUser } = useContext(authContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
     const onSubmit = (data) => {
-        console.log(data)
+        const email = data.email;
+        const password = data.password;
+
+        signInUser(email, password)
+            .then(res => {
+                console.log(res.user);
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+
     }
     return (
         <div className='flex justify-between items-center gap-10 mt-10 mb-20'>

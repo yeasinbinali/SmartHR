@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form"
 import { Link } from 'react-router-dom';
+import { authContext } from '../../providers/AuthProvider';
 
 const Register = () => {
     const { register, handleSubmit } = useForm();
+    const { createUser } = useContext(authContext);
+
     const onSubmit = (data) => {
-        console.log(data)
+        const email = data.email;
+        const password = data.password;
+
+        createUser(email, password)
+            .then(res => {
+                console.log(res.user)
+            })
+            .catch(error => {
+                console.error(error.message);
+            })
     }
+    
     return (
         <div className='mt-10 my-20'>
             <form onSubmit={handleSubmit(onSubmit)}>
