@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
@@ -18,6 +19,13 @@ const Login = () => {
             .then(res => {
                 console.log(res.user);
                 navigate(location?.state ? location.state : '/');
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Login successfully done",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             })
             .catch(error => {
                 console.log(error.message);
@@ -28,12 +36,19 @@ const Login = () => {
         googleSignIn()
             .then(res => {
                 console.log(res.user);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Google Login successfully done",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             })
             .catch(error => {
                 console.log(error.message);
             })
     }
-    
+
     return (
         <div className='flex justify-between items-center gap-10 mt-10 mb-20'>
             <div className='w-[40%] mx-auto'>

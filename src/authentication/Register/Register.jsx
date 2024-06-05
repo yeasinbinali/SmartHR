@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 import { Link } from 'react-router-dom';
 import { authContext } from '../../providers/AuthProvider';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
+import Swal from 'sweetalert2';
 
 const image_hosting_key = 'd4f75cbd1e84a7835c536036c7e5f01b';
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
@@ -38,6 +39,15 @@ const Register = () => {
                 axiosPublic.post('/users', userData)
                     .then(res => {
                         console.log(res.data)
+                        if (res.data.acknowledged) {
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "Register successfully",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
                     })
                     .catch(error => {
                         console.error(error.message)
