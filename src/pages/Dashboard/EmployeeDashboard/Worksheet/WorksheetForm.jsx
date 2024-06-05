@@ -6,12 +6,14 @@ import "react-datepicker/dist/react-datepicker.css";
 import { authContext } from '../../../../providers/AuthProvider';
 import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import Swal from 'sweetalert2';
+import useWorksheet from '../../../../hooks/useWorksheet';
 
 const WorksheetForm = () => {
     const { user } = useContext(authContext);
     const { register, handleSubmit, setValue } = useForm();
     const [startDate, setStartDate] = useState(new Date());
     const axiosSecure = useAxiosPrivate();
+    const [, refetch] = useWorksheet();
 
     useEffect(() => {
         // Initialize the date value in the form
@@ -23,13 +25,13 @@ const WorksheetForm = () => {
         const task = data.task;
         const workHoured = data.workHoured;
         const date = data.date;
-        const workSheet = {
+        const worksheet = {
             email,
             task,
             workHoured,
             date
         }
-        axiosSecure.post('/worksheet', workSheet)
+        axiosSecure.post('/worksheet', worksheet)
             .then(res => {
                 if (res.data.acknowledged) {
                     Swal.fire({
@@ -39,6 +41,7 @@ const WorksheetForm = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    refetch();
                 }
             })
             .catch(error => {
@@ -60,7 +63,7 @@ const WorksheetForm = () => {
         <div className='mb-10'>
             <PrivateContainerHeader title="Add your work"></PrivateContainerHeader>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className='grid grid-cols-2 gap-5'>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
                     <div className='w-full mx-auto'>
                         <label>Tasks</label><br />
                         <select required className='border-[1px] border-black w-[100%]' {...register("task")}>

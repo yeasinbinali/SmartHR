@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../../providers/AuthProvider';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import Swal from 'sweetalert2';
@@ -12,6 +12,7 @@ const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser } = useContext(authContext);
     const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         const email = data.email;
@@ -46,6 +47,7 @@ const Register = () => {
                                 timer: 1500
                             });
                         }
+                        navigate('/');
                     })
                     .catch(error => {
                         Swal.fire({

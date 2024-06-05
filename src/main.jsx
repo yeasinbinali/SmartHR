@@ -10,6 +10,12 @@ import AuthProvider from './providers/AuthProvider.jsx';
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard.jsx';
 import PrivateRoute from './route/PrivateRoute.jsx';
 import Worksheet from './pages/Dashboard/EmployeeDashboard/Worksheet/Worksheet.jsx';
+import {
+  QueryClient,
+  QueryClientProvider
+} from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
@@ -46,9 +52,11 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-      <div className='max-w-screen-xl mx-auto px-5'>
-        <RouterProvider router={router} />
-      </div>
+      <QueryClientProvider client={queryClient}>
+        <div className='max-w-screen-xl mx-auto px-5'>
+          <RouterProvider router={router} />
+        </div>
+      </QueryClientProvider>
     </AuthProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )
