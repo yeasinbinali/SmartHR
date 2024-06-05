@@ -35,10 +35,8 @@ const Register = () => {
 
         createUser(email, password)
             .then(res => {
-                console.log(res.user)
                 axiosPublic.post('/users', userData)
                     .then(res => {
-                        console.log(res.data)
                         if (res.data.acknowledged) {
                             Swal.fire({
                                 position: "top-end",
@@ -50,11 +48,21 @@ const Register = () => {
                         }
                     })
                     .catch(error => {
-                        console.error(error.message)
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Something went wrong!",
+                            footer: `${error.message}`
+                        });
                     })
             })
             .catch(error => {
-                console.error(error.message);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    footer: `${error.message}`
+                });
             })
     }
 
@@ -73,7 +81,12 @@ const Register = () => {
                     </div>
                     <div className='w-full mx-auto'>
                         <label>Bank Account No</label><br />
-                        <input required placeholder='Your bank account' type='text' className='border-[1px] border-black w-[100%]' {...register("bankAccount")} />
+                        <input required placeholder='Your bank account' type='number' className='border-[1px] border-black w-[100%]' {...register("bankAccount", {
+                            maxLength: 6,
+                            minLength: 5
+                        })} />
+                        {errors.bankAccount?.type === "maxLength" && <p>Max length 6</p>}
+                        {errors.bankAccount?.type === "minLength" && <p>Min length 5</p>}
                     </div>
                     <div className='w-full mx-auto'>
                         <label>Salary</label><br />

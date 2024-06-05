@@ -28,7 +28,12 @@ const Login = () => {
                 });
             })
             .catch(error => {
-                console.log(error.message);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    footer: `${error.message}`
+                });
             })
     }
 
@@ -45,7 +50,12 @@ const Login = () => {
                 });
             })
             .catch(error => {
-                console.log(error.message);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    footer: `${error.message}`
+                });
             })
     }
 
