@@ -35,7 +35,7 @@ const Header = () => {
                                 arrowIcon={false}
                                 inline
                                 label={
-                                    <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
+                                    <Avatar alt="User settings" img={user.photoURL} rounded />
                                 }
                             >
                                 <Dropdown.Header>

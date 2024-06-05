@@ -16,6 +16,7 @@ import {
 import PaymentHistory from './pages/Dashboard/EmployeeDashboard/PaymentHistory/PaymentHistory.jsx';
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard.jsx';
 import DashboardContent from './pages/Dashboard/DashboardContent/DashboardContent.jsx';
+import EmployeeList from './pages/Dashboard/HRDashboard/EmployeeList/EmployeeList.jsx';
 
 
 const queryClient = new QueryClient()
@@ -45,12 +46,20 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/dashboard',
+        element: <DashboardContent></DashboardContent>
+      },
+      {
+        path: '/dashboard/worksheet',
         element: <Worksheet></Worksheet>
       },
       {
         path: '/dashboard/paymentHistory',
         element: <PaymentHistory></PaymentHistory>
-      }
+      },
+      {
+        path: '/dashboard/employeeList',
+        element: <EmployeeList></EmployeeList>
+      },
     ]
   },
 ]);

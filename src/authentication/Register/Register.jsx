@@ -10,7 +10,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { createUser } = useContext(authContext);
+    const { createUser, updateUserProfile } = useContext(authContext);
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
 
@@ -32,13 +32,16 @@ const Register = () => {
         const bankAccount = data.bankAccount;
         const designation = data.designation;
         const salary = data.salary;
+        const status = 'Not verified';
 
-        const userData = { role, name, imageURL, bankAccount, email, designation, salary }
+        const userData = { role, name, imageURL, bankAccount, email, designation, salary, status }
 
         createUser(email, password)
             .then(res => {
                 axiosPublic.post('/users', userData)
                     .then(res => {
+                        updateUserProfile(name, imageURL)
+                            .then(() => { })
                         if (res.data.acknowledged) {
                             Swal.fire({
                                 position: "top-end",

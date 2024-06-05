@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Sidebar } from "flowbite-react";
 import { FaHistory, FaHome, FaList } from 'react-icons/fa';
 import { FaSheetPlastic } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
 import useUsersData from '../../../hooks/useUsersData';
+import { authContext } from '../../../providers/AuthProvider';
 
 
 const DashboardSidebar = () => {
     const [users] = useUsersData();
-    console.log(users);
-    const employee = users.map(user => user.role === 'Employee')
-    const hr = users.map(user => user.role === 'HR')
-    const admin = users.map(user => user.role === 'Admin')
+    const { user } = useContext(authContext);
+    const recognizedUser = users.filter(recUser => recUser.email === user.email)
+
+    const employee = recognizedUser[0]?.role === 'Employee';
+    const hr = recognizedUser[0]?.role === 'HR';
+    const admin = recognizedUser[0]?.role === 'Admin';
+
     return (
         <div className='min-h-screen border-r-[2px] border-black'>
             <Sidebar aria-label="Sidebar with content separator example">
                 <Sidebar.Items>
                     {
                         employee && <Sidebar.ItemGroup>
-                            <NavLink to="/dashboard">
+                            <NavLink to="/dashboard/worksheet">
                                 <Sidebar.Item icon={FaSheetPlastic}>
                                     Worksheet
                                 </Sidebar.Item>
@@ -32,7 +36,7 @@ const DashboardSidebar = () => {
                     }
                     {
                         hr && <Sidebar.ItemGroup>
-                            <NavLink to="/dashboard">
+                            <NavLink to="/dashboard/employeeList">
                                 <Sidebar.Item icon={FaSheetPlastic}>
                                     Employee List
                                 </Sidebar.Item>
