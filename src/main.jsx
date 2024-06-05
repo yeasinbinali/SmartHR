@@ -7,13 +7,16 @@ import Home from './pages/Home/Home/Home.jsx';
 import Login from './authentication/Login/Login.jsx';
 import Register from './authentication/Register/Register.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
-import Dashboard from './pages/Dashboard/Dashboard/Dashboard.jsx';
 import PrivateRoute from './route/PrivateRoute.jsx';
 import Worksheet from './pages/Dashboard/EmployeeDashboard/Worksheet/Worksheet.jsx';
 import {
   QueryClient,
   QueryClientProvider
 } from '@tanstack/react-query'
+import PaymentHistory from './pages/Dashboard/EmployeeDashboard/PaymentHistory/PaymentHistory.jsx';
+import Dashboard from './pages/Dashboard/Dashboard/Dashboard.jsx';
+import DashboardContent from './pages/Dashboard/DashboardContent/DashboardContent.jsx';
+
 
 const queryClient = new QueryClient()
 
@@ -43,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard',
         element: <Worksheet></Worksheet>
+      },
+      {
+        path: '/dashboard/paymentHistory',
+        element: <PaymentHistory></PaymentHistory>
       }
     ]
   },

@@ -28,11 +28,12 @@ const Register = () => {
         const imageURL = res.data.data.display_url;
 
         const role = data.role;
+        const name = data.name;
         const bankAccount = data.bankAccount;
         const designation = data.designation;
         const salary = data.salary;
 
-        const userData = { role, imageURL, bankAccount, email, designation, salary }
+        const userData = { role, name, imageURL, bankAccount, email, designation, salary }
 
         createUser(email, password)
             .then(res => {
@@ -80,6 +81,10 @@ const Register = () => {
                             <option value="HR">HR</option>
                             <option disabled value="Admin">Admin</option>
                         </select>
+                    </div>
+                    <div className='w-full mx-auto'>
+                        <label>Full name</label><br />
+                        <input required placeholder='Your name' type='text' className='border-[1px] border-black w-[100%]' {...register("name")} />
                     </div>
                     <div className='w-full mx-auto'>
                         <label>Bank Account No</label><br />
