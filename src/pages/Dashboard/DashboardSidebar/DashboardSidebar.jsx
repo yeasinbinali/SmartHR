@@ -23,12 +23,12 @@ const DashboardSidebar = () => {
                     {
                         employee && <Sidebar.ItemGroup>
                             <NavLink to="/dashboard/worksheet">
-                                <Sidebar.Item icon={FaSheetPlastic}>
+                                <Sidebar.Item className='mb-2' icon={FaSheetPlastic}>
                                     Worksheet
                                 </Sidebar.Item>
                             </NavLink>
                             <NavLink to='/dashboard/paymentHistory'>
-                                <Sidebar.Item icon={FaHistory}>
+                                <Sidebar.Item className='mb-2' icon={FaHistory}>
                                     Payment History
                                 </Sidebar.Item>
                             </NavLink>
@@ -37,12 +37,12 @@ const DashboardSidebar = () => {
                     {
                         hr && <Sidebar.ItemGroup>
                             <NavLink to="/dashboard/employeeList">
-                                <Sidebar.Item icon={FaSheetPlastic}>
+                                <Sidebar.Item className='mb-2' icon={FaSheetPlastic}>
                                     Employee List
                                 </Sidebar.Item>
                             </NavLink>
                             <NavLink to='/dashboard/details'>
-                                <Sidebar.Item icon={FaHistory}>
+                                <Sidebar.Item className='mb-2' icon={FaHistory}>
                                     Details
                                 </Sidebar.Item>
                             </NavLink>
@@ -50,12 +50,12 @@ const DashboardSidebar = () => {
                     }
                     <Sidebar.ItemGroup>
                         <NavLink to='/'>
-                            <Sidebar.Item icon={FaHome}>
+                            <Sidebar.Item className='mb-2' icon={FaHome} >
                                 Home
                             </Sidebar.Item>
                         </NavLink>
                         <NavLink to='/contact'>
-                            <Sidebar.Item icon={FaList}>
+                            <Sidebar.Item className='mb-2' icon={FaList}>
                                 Contact
                             </Sidebar.Item>
                         </NavLink>

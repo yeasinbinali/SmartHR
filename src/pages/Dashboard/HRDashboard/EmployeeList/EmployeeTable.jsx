@@ -1,9 +1,33 @@
 import React from 'react';
-import { Table } from "flowbite-react";
+import { Table, Tooltip } from "flowbite-react";
 import useUsersData from '../../../../hooks/useUsersData';
+import Swal from 'sweetalert2';
 
 const EmployeeTable = () => {
     const [users] = useUsersData();
+
+    const handleNotVerified = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const specificUser = users.filter(user => user._id === id);
+                console.log(specificUser);
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
+    }
+
     return (
         <div className="overflow-x-auto">
             <Table hoverable>
@@ -25,11 +49,15 @@ const EmployeeTable = () => {
                             <Table.Cell>{user.bankAccount}</Table.Cell>
                             <Table.Cell>{user.salary}</Table.Cell>
                             {
-                                user.status === 'Not verified' ? <Table.Cell>❌</Table.Cell> : <Table.Cell>✅</Table.Cell>
+                                user.status === 'Not verified' ? <Tooltip content="Not verified"><Table.Cell onClick={() => handleNotVerified(user._id)}>❌</Table.Cell></Tooltip> : <Tooltip content="Verified"><Table.Cell>✅</Table.Cell></Tooltip>
                             }
-                            <Table.Cell>
-                                <button disabled className='btn btn-sm bg-main text-secondary px-2 py-1'>Pay</button>
-                            </Table.Cell>
+                            {
+                                user.status === 'Not verified' ? <Table.Cell>
+                                    <button disabled className='btn btn-sm bg-[whitesmoke] text-black px-2 py-1'>Pay</button>
+                                </Table.Cell> : <Table.Cell>
+                                    <button className='btn btn-sm bg-main text-secondary px-2 py-1'>Pay</button>
+                                </Table.Cell>
+                            }
                         </Table.Row>)
                     }
                 </Table.Body>
