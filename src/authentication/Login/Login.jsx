@@ -4,12 +4,14 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
     const { signInUser, googleSignIn } = useContext(authContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const axiosPublic = useAxiosPublic();
 
     const onSubmit = (data) => {
         const email = data.email;
@@ -38,24 +40,40 @@ const Login = () => {
     }
 
     const handleGoogleSignIn = () => {
+        const role = 'Employee';
+        const designation = 'Sales assistant';
+        const status = 'Not verified';
+        const salary = 10000;
+        const bankAccount = 12345;
         googleSignIn()
             .then(res => {
-                console.log(res.user);
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Google Login successfully done",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            })
-            .catch(error => {
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Something went wrong!",
-                    footer: `${error.message}`
-                });
+                const googleUser = res.user;
+                const email = googleUser.email;
+                const name = googleUser.displayName;
+                const imageURL = googleUser.photoURL;
+
+                const userData = { role, name, imageURL, bankAccount, email, designation, salary, status };
+                axiosPublic.post('/users', userData)
+                    .then(res => {
+                        if (res.data.acknowledged) {
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "Register successfully",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                        navigate('/');
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Something went wrong!",
+                            footer: `${error.message}`
+                        });
+                    })
             })
     }
 

@@ -2,9 +2,11 @@ import React from 'react';
 import { Table, Tooltip } from "flowbite-react";
 import useUsersData from '../../../../hooks/useUsersData';
 import Swal from 'sweetalert2';
+import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 
 const EmployeeTable = () => {
     const [users] = useUsersData();
+    const axiosSecure = useAxiosPrivate();
 
     const handleNotVerified = (id) => {
         Swal.fire({
@@ -17,8 +19,26 @@ const EmployeeTable = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                const specificUser = users.filter(user => user._id === id);
-                console.log(specificUser);
+                const specificUserArray = users.filter(user => user._id === id);
+                const specificId = specificUserArray[0]._id;
+
+                let specificUser = specificUserArray[0];
+                specificUser.status = 'Verified';
+                const status = specificUser.status;
+                const updatedUser = { status };
+
+                axiosSecure.patch(`/users/${specificId}`, updatedUser)
+                    .then(res => {
+                        if (res.data.modifiedCount > 0) {
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "Verified successfully",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                    })
                 Swal.fire({
                     title: "Deleted!",
                     text: "Your file has been deleted.",
@@ -32,6 +52,7 @@ const EmployeeTable = () => {
         <div className="overflow-x-auto">
             <Table hoverable>
                 <Table.Head>
+                    <Table.HeadCell>Role</Table.HeadCell>
                     <Table.HeadCell>Name</Table.HeadCell>
                     <Table.HeadCell>Email</Table.HeadCell>
                     <Table.HeadCell>Bank Account</Table.HeadCell>
@@ -42,12 +63,13 @@ const EmployeeTable = () => {
                 <Table.Body className="divide-y">
                     {
                         users.map(user => <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                            <Table.Cell>{user?.role}</Table.Cell>
                             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                                {user.name}
+                                {user?.name}
                             </Table.Cell>
-                            <Table.Cell>{user.email}</Table.Cell>
-                            <Table.Cell>{user.bankAccount}</Table.Cell>
-                            <Table.Cell>{user.salary}</Table.Cell>
+                            <Table.Cell>{user?.email}</Table.Cell>
+                            <Table.Cell>{user?.bankAccount}</Table.Cell>
+                            <Table.Cell>{user?.salary}</Table.Cell>
                             {
                                 user.status === 'Not verified' ? <Tooltip content="Not verified"><Table.Cell onClick={() => handleNotVerified(user._id)}>❌</Table.Cell></Tooltip> : <Tooltip content="Verified"><Table.Cell>✅</Table.Cell></Tooltip>
                             }
