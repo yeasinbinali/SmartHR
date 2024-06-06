@@ -3,10 +3,12 @@ import { Table, Tooltip } from "flowbite-react";
 import useUsersData from '../../../../hooks/useUsersData';
 import Swal from 'sweetalert2';
 import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
+import { useNavigate } from 'react-router-dom';
 
 const EmployeeTable = () => {
     const [users] = useUsersData();
     const axiosSecure = useAxiosPrivate();
+    const navigate = useNavigate();
 
     const handleNotVerified = (id) => {
         Swal.fire({
@@ -38,6 +40,7 @@ const EmployeeTable = () => {
                                 timer: 1500
                             });
                         }
+                        navigate(0)
                     })
                 Swal.fire({
                     title: "Deleted!",
@@ -59,6 +62,7 @@ const EmployeeTable = () => {
                     <Table.HeadCell>Salary</Table.HeadCell>
                     <Table.HeadCell>Status</Table.HeadCell>
                     <Table.HeadCell>Payment</Table.HeadCell>
+                    <Table.HeadCell></Table.HeadCell>
                 </Table.Head>
                 <Table.Body className="divide-y">
                     {
@@ -80,6 +84,7 @@ const EmployeeTable = () => {
                                     <button className='btn btn-sm bg-main text-secondary px-2 py-1'>Pay</button>
                                 </Table.Cell>
                             }
+                            <Table.Cell><button className='btn btn-sm bg-primary text-secondary px-2 py-1'>Details</button></Table.Cell>
                         </Table.Row>)
                     }
                 </Table.Body>
