@@ -52,7 +52,7 @@ const EmployeeTable = () => {
     }
 
     return (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto overflow-y-scroll lg:w-[90%]">
             <Table hoverable>
                 <Table.Head>
                     <Table.HeadCell>Role</Table.HeadCell>

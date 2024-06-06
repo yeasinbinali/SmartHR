@@ -39,40 +39,40 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login></Login>
-      }
-    ]
-  },
-  {
-    path: '/dashboard',
-    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-    children: [
+      },
       {
         path: '/dashboard',
-        element: <DashboardContent></DashboardContent>
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        children: [
+          {
+            path: '/dashboard',
+            element: <DashboardContent></DashboardContent>
+          },
+          {
+            path: '/dashboard/worksheet',
+            element: <Worksheet></Worksheet>
+          },
+          {
+            path: '/dashboard/paymentHistory',
+            element: <PaymentHistory></PaymentHistory>
+          },
+          {
+            path: '/dashboard/employeeList',
+            element: <EmployeeList></EmployeeList>
+          },
+          {
+            path: '/dashboard/employeeList/:id',
+            element: <EmployeeDetails></EmployeeDetails>,
+            loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
+          },
+          {
+            path: '/dashboard/progress',
+            element: <Progress></Progress>
+          }
+        ]
       },
-      {
-        path: '/dashboard/worksheet',
-        element: <Worksheet></Worksheet>
-      },
-      {
-        path: '/dashboard/paymentHistory',
-        element: <PaymentHistory></PaymentHistory>
-      },
-      {
-        path: '/dashboard/employeeList',
-        element: <EmployeeList></EmployeeList>
-      },
-      {
-        path: '/dashboard/employeeList/:id',
-        element: <EmployeeDetails></EmployeeDetails>,
-        loader: ({params}) => fetch(`http://localhost:5000/users/${params.id}`)
-      },
-      {
-        path: '/dashboard/progress',
-        element: <Progress></Progress>
-      }
     ]
-  },
+  }
 ]);
 
 

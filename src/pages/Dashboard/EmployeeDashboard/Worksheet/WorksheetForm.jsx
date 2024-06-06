@@ -21,11 +21,13 @@ const WorksheetForm = () => {
     }, [setValue, startDate]);
 
     const onSubmit = (data) => {
+        const name = user?.displayName;
         const email = user?.email;
         const task = data.task;
         const workHoured = data.workHoured;
         const date = data.date;
         const worksheet = {
+            name,
             email,
             task,
             workHoured,
@@ -89,6 +91,7 @@ const WorksheetForm = () => {
                     <div className='w-full mx-auto'>
                         <label>Date</label><br />
                         <DatePicker
+                            dateFormat="dd/MM/yyyy"
                             selected={startDate}
                             onChange={handleDateChange}
                             className='border-[1px] border-black w-[100%]'

@@ -4,6 +4,7 @@ import logo from '../../assets/logo.png';
 import { Link, NavLink } from 'react-router-dom';
 import './Header.css';
 import { authContext } from '../../providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Header = () => {
     const { user, logoutUser } = useContext(authContext);
@@ -15,11 +16,33 @@ const Header = () => {
     ]
 
     const handleLogout = () => {
-        logoutUser()
-            .then(() => alert('Logout user'))
-            .catch((error) => {
-                console.log(error.message);
-            })
+        Swal.fire({
+            title: "Do you want to log out?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logoutUser()
+                    .then(() => {})
+                    .catch((error) => {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Something went wrong!",
+                            footer: `${error.message}`
+                          });
+                    })
+                Swal.fire({
+                    title: "Done",
+                    text: "Logout successfully",
+                    icon: "success"
+                });
+            }
+        });
     }
 
     return (
@@ -39,7 +62,7 @@ const Header = () => {
                                 }
                             >
                                 <Dropdown.Header>
-                                    <span className="block text-sm">Bonnie Green</span>
+                                    <span className="block text-sm">{user.displayName}</span>
                                     <span className="block truncate text-sm font-medium">{user.email}</span>
                                 </Dropdown.Header>
                                 <Dropdown.Divider />

@@ -17,7 +17,7 @@ const DashboardSidebar = () => {
     const admin = recognizedUser[0]?.role === 'Admin';
 
     return (
-        <div className='min-h-screen border-r-[2px] border-black'>
+        <div className='lg:min-h-screen border-r-[2px] border-black'>
             <Sidebar aria-label="Sidebar with content separator example">
                 <Sidebar.Items>
                     {
@@ -48,18 +48,6 @@ const DashboardSidebar = () => {
                             </NavLink>
                         </Sidebar.ItemGroup>
                     }
-                    <Sidebar.ItemGroup>
-                        <NavLink to='/'>
-                            <Sidebar.Item className='mb-2' icon={FaHome} >
-                                Home
-                            </Sidebar.Item>
-                        </NavLink>
-                        <NavLink to='/contact'>
-                            <Sidebar.Item className='mb-2' icon={FaList}>
-                                Contact
-                            </Sidebar.Item>
-                        </NavLink>
-                    </Sidebar.ItemGroup>
                 </Sidebar.Items>
             </Sidebar>
         </div>
