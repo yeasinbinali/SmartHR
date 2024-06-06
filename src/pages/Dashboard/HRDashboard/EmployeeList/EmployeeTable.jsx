@@ -3,7 +3,7 @@ import { Table, Tooltip } from "flowbite-react";
 import useUsersData from '../../../../hooks/useUsersData';
 import Swal from 'sweetalert2';
 import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const EmployeeTable = () => {
     const [users] = useUsersData();
@@ -84,7 +84,7 @@ const EmployeeTable = () => {
                                     <button className='btn btn-sm bg-main text-secondary px-2 py-1'>Pay</button>
                                 </Table.Cell>
                             }
-                            <Table.Cell><button className='btn btn-sm bg-primary text-secondary px-2 py-1'>Details</button></Table.Cell>
+                            <Link to={`/dashboard/employeeList/${user._id}`}><Table.Cell><button className='btn btn-sm bg-primary text-secondary px-2 py-1'>Details</button></Table.Cell></Link>
                         </Table.Row>)
                     }
                 </Table.Body>

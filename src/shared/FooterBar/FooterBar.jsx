@@ -45,7 +45,7 @@ const FooterBar = () => {
                     </div>
                 </div>
                 <div className="w-full px-4 py-6 sm:flex sm:items-center sm:justify-between">
-                    <Footer.Copyright className='text-black' href="#" by="SmartHR™" year={2022} />
+                    <Footer.Copyright className='text-black' href="#" by="SmartHR™" year={2028} />
                     <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
                         <Footer.Icon className='text-black' href="#" icon={BsFacebook} />
                         <Footer.Icon className='text-black' href="#" icon={BsInstagram} />

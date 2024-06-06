@@ -18,6 +18,7 @@ import Dashboard from './pages/Dashboard/Dashboard/Dashboard.jsx';
 import DashboardContent from './pages/Dashboard/DashboardContent/DashboardContent.jsx';
 import EmployeeList from './pages/Dashboard/HRDashboard/EmployeeList/EmployeeList.jsx';
 import Progress from './pages/Dashboard/HRDashboard/Progress/Progress.jsx';
+import EmployeeDetails from './pages/Dashboard/HRDashboard/EmployeeList/EmployeeDetails.jsx';
 
 
 const queryClient = new QueryClient()
@@ -60,6 +61,11 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/employeeList',
         element: <EmployeeList></EmployeeList>
+      },
+      {
+        path: '/dashboard/employeeList/:id',
+        element: <EmployeeDetails></EmployeeDetails>,
+        loader: ({params}) => fetch(`http://localhost:5000/users/${params.id}`)
       },
       {
         path: '/dashboard/progress',
