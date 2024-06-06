@@ -12,13 +12,13 @@ const EmployeeTable = () => {
 
     const handleNotVerified = (id) => {
         Swal.fire({
-            title: "Are you sure?",
+            title: "Do you want to verify this user?",
             text: "You won't be able to revert this!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Yes, verify it"
         }).then((result) => {
             if (result.isConfirmed) {
                 const specificUserArray = users.filter(user => user._id === id);
@@ -73,7 +73,7 @@ const EmployeeTable = () => {
                             </Table.Cell>
                             <Table.Cell>{user?.email}</Table.Cell>
                             <Table.Cell>{user?.bankAccount}</Table.Cell>
-                            <Table.Cell>{user?.salary}</Table.Cell>
+                            <Table.Cell>${user?.salary}</Table.Cell>
                             {
                                 user.status === 'Not verified' ? <Tooltip content="Not verified"><Table.Cell onClick={() => handleNotVerified(user._id)}>❌</Table.Cell></Tooltip> : <Tooltip content="Verified"><Table.Cell>✅</Table.Cell></Tooltip>
                             }

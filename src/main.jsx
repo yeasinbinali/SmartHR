@@ -17,6 +17,7 @@ import PaymentHistory from './pages/Dashboard/EmployeeDashboard/PaymentHistory/P
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard.jsx';
 import DashboardContent from './pages/Dashboard/DashboardContent/DashboardContent.jsx';
 import EmployeeList from './pages/Dashboard/HRDashboard/EmployeeList/EmployeeList.jsx';
+import Progress from './pages/Dashboard/HRDashboard/Progress/Progress.jsx';
 
 
 const queryClient = new QueryClient()
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
         path: '/dashboard/employeeList',
         element: <EmployeeList></EmployeeList>
       },
+      {
+        path: '/dashboard/progress',
+        element: <Progress></Progress>
+      }
     ]
   },
 ]);

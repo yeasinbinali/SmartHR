@@ -41,9 +41,9 @@ const DashboardSidebar = () => {
                                     Employee List
                                 </Sidebar.Item>
                             </NavLink>
-                            <NavLink to='/dashboard/details'>
+                            <NavLink to='/dashboard/progress'>
                                 <Sidebar.Item className='mb-2' icon={FaHistory}>
-                                    Details
+                                    Progress
                                 </Sidebar.Item>
                             </NavLink>
                         </Sidebar.ItemGroup>
