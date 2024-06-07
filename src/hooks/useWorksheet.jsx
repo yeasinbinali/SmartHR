@@ -9,10 +9,11 @@ const useWorksheet = () => {
     const { data: worksheet = [], refetch } = useQuery({
         queryKey: ['worksheet', user?.email],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/worksheet?email=${user?.email}`)
+            const res = await axiosSecure.get(`/worksheet/${user?.email}`)
             return res.data;
         }
     })
+
     return [worksheet, refetch]
 };
 
