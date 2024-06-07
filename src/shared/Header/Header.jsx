@@ -47,7 +47,7 @@ const Header = () => {
 
     return (
         <div>
-            <Navbar className='bg-gray-50 py-5' fluid rounded>
+            <Navbar className='bg-gray-200 py-5' fluid rounded>
                 <Navbar.Brand>
                     <img src={logo} alt="logo" />
                 </Navbar.Brand>
