@@ -19,7 +19,6 @@ const Login = () => {
 
         signInUser(email, password)
             .then(res => {
-                console.log(res.user);
                 navigate(location?.state ? location.state : '/');
                 Swal.fire({
                     position: "top-end",
@@ -87,11 +86,11 @@ const Login = () => {
                     <h1 className='text-5xl font-bold text-center mb-10'>Login</h1>
                     <div className='w-full mx-auto'>
                         <label>Email</label><br />
-                        <input placeholder='Write your email' type='email' className='border-[1px] border-black w-[100%]' {...register("email")} />
+                        <input placeholder='Write your email' type='email' className='border-[1px] border-black w-[100%]' {...register("email")} required />
                     </div>
                     <div className='w-full mx-auto mt-5'>
                         <label>Password</label><br />
-                        <input placeholder='Write your password' type='password' className='border-[1px] border-black w-[100%]' {...register("password")} />
+                        <input placeholder='Write your password' type='password' className='border-[1px] border-black w-[100%]' {...register("password")} required />
                     </div>
                     <input className='btn bg-primary text-white w-full py-2 mt-5' type="submit" />
                 </form>

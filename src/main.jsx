@@ -21,6 +21,7 @@ import Progress from './pages/Dashboard/HRDashboard/Progress/Progress.jsx';
 import EmployeeDetails from './pages/Dashboard/HRDashboard/EmployeeList/EmployeeDetails.jsx';
 import AllEmployees from './pages/Dashboard/AdminDashboard/AllEmployees/AllEmployees.jsx';
 import Messages from './pages/Dashboard/AdminDashboard/Messages/Messages.jsx';
+import Contact from './pages/Contact/Contact.jsx';
 
 
 const queryClient = new QueryClient()
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
+      },
+      {
+        path: '/contact',
+        element: <Contact></Contact>
       },
       {
         path: '/register',
