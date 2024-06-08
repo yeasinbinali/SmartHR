@@ -1,9 +1,10 @@
 import React from 'react';
+import PrivateContainerHeader from '../../../../components/PrivateContainerHeader/PrivateContainerHeader';
 
 const Messages = () => {
     return (
         <div className='mt-5 ml-5'>
-            <h1>All messages</h1>
+            <PrivateContainerHeader title="All Messages from Employees and HR"></PrivateContainerHeader>
         </div>
     );
 };
