@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Sidebar } from "flowbite-react";
 import { FaHistory, FaHome, FaList } from 'react-icons/fa';
-import { FaSheetPlastic } from 'react-icons/fa6';
+import { FaMessage, FaSheetPlastic } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
 import useUsersData from '../../../hooks/useUsersData';
 import { authContext } from '../../../providers/AuthProvider';
@@ -44,6 +44,20 @@ const DashboardSidebar = () => {
                             <NavLink to='/dashboard/progress'>
                                 <Sidebar.Item className='mb-2' icon={FaHistory}>
                                     Progress
+                                </Sidebar.Item>
+                            </NavLink>
+                        </Sidebar.ItemGroup>
+                    }
+                    {
+                        admin && <Sidebar.ItemGroup>
+                            <NavLink to="/dashboard/allEmployees">
+                                <Sidebar.Item className='mb-2' icon={FaSheetPlastic}>
+                                    All Employees
+                                </Sidebar.Item>
+                            </NavLink>
+                            <NavLink to='/dashboard/messages'>
+                                <Sidebar.Item className='mb-2' icon={FaMessage}>
+                                    Messages
                                 </Sidebar.Item>
                             </NavLink>
                         </Sidebar.ItemGroup>

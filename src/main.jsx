@@ -19,6 +19,8 @@ import DashboardContent from './pages/Dashboard/DashboardContent/DashboardConten
 import EmployeeList from './pages/Dashboard/HRDashboard/EmployeeList/EmployeeList.jsx';
 import Progress from './pages/Dashboard/HRDashboard/Progress/Progress.jsx';
 import EmployeeDetails from './pages/Dashboard/HRDashboard/EmployeeList/EmployeeDetails.jsx';
+import AllEmployees from './pages/Dashboard/AdminDashboard/AllEmployees/AllEmployees.jsx';
+import Messages from './pages/Dashboard/AdminDashboard/Messages/Messages.jsx';
 
 
 const queryClient = new QueryClient()
@@ -48,6 +50,7 @@ const router = createBrowserRouter([
             path: '/dashboard',
             element: <DashboardContent></DashboardContent>
           },
+          // employee dashboard item
           {
             path: '/dashboard/worksheet',
             element: <Worksheet></Worksheet>
@@ -56,6 +59,7 @@ const router = createBrowserRouter([
             path: '/dashboard/paymentHistory',
             element: <PaymentHistory></PaymentHistory>
           },
+          // hr dashboard item
           {
             path: '/dashboard/employeeList',
             element: <EmployeeList></EmployeeList>
@@ -68,6 +72,15 @@ const router = createBrowserRouter([
           {
             path: '/dashboard/progress',
             element: <Progress></Progress>
+          },
+          // admin dashboard item
+          {
+            path: '/dashboard/allEmployees',
+            element: <AllEmployees></AllEmployees>
+          },
+          {
+            path: '/dashboard/messages',
+            element: <Messages></Messages>
           }
         ]
       },

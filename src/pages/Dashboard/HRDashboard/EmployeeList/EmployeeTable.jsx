@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Table, Tooltip } from "flowbite-react";
 import useUsersData from '../../../../hooks/useUsersData';
 import Swal from 'sweetalert2';
@@ -6,9 +6,15 @@ import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import { Link, useNavigate } from 'react-router-dom';
 
 const EmployeeTable = () => {
+    const [employees, setEmployees] = useState([]);
     const [users] = useUsersData();
     const axiosSecure = useAxiosPrivate();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const filterEmployees = users.filter(user => user.role === 'Employee');
+        setEmployees(filterEmployees);
+    }, [users])
 
     const handleNotVerified = (id) => {
         Swal.fire({
@@ -21,7 +27,7 @@ const EmployeeTable = () => {
             confirmButtonText: "Yes, verify it"
         }).then((result) => {
             if (result.isConfirmed) {
-                const specificUserArray = users.filter(user => user._id === id);
+                const specificUserArray = employees.filter(user => user._id === id);
                 const specificId = specificUserArray[0]._id;
 
                 let specificUser = specificUserArray[0];
@@ -43,8 +49,8 @@ const EmployeeTable = () => {
                         navigate(0)
                     })
                 Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
+                    title: "Verified",
+                    text: "Employee verified successfully",
                     icon: "success"
                 });
             }
@@ -66,7 +72,7 @@ const EmployeeTable = () => {
                 </Table.Head>
                 <Table.Body className="divide-y">
                     {
-                        users.map(user => <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                        employees.map(user => <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
                             <Table.Cell>{user?.role}</Table.Cell>
                             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                                 {user?.name}
