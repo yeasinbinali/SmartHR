@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
+import useUsersData from '../../hooks/useUsersData';
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
@@ -12,30 +13,41 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const axiosPublic = useAxiosPublic();
+    const [users] = useUsersData();
 
     const onSubmit = (data) => {
         const email = data.email;
         const password = data.password;
 
-        signInUser(email, password)
-            .then(res => {
-                navigate(location?.state ? location.state : '/');
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Login successfully done",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            })
-            .catch(error => {
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Something went wrong!",
-                    footer: `${error.message}`
-                });
-            })
+        const specificUserArray = users.filter(user => user.email === email);
+        const specificUser = specificUserArray[0];
+        if (specificUser.fired) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "You have been fired. So you can no longer login!"
+            });
+        } else {
+            signInUser(email, password)
+                .then(res => {
+                    navigate(location?.state ? location.state : '/');
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Login successfully done",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                })
+                .catch(error => {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something went wrong!",
+                        footer: `${error.message}`
+                    });
+                })
+        }
     }
 
     const handleGoogleSignIn = () => {
