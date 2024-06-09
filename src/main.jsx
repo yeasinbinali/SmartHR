@@ -22,6 +22,7 @@ import EmployeeDetails from './pages/Dashboard/HRDashboard/EmployeeList/Employee
 import AllEmployees from './pages/Dashboard/AdminDashboard/AllEmployees/AllEmployees.jsx';
 import Messages from './pages/Dashboard/AdminDashboard/Messages/Messages.jsx';
 import Contact from './pages/Contact/Contact.jsx';
+import EmployeeSalary from './pages/Dashboard/AdminDashboard/AllEmployees/EmployeeSalary.jsx';
 
 
 const queryClient = new QueryClient()
@@ -82,6 +83,11 @@ const router = createBrowserRouter([
           {
             path: '/dashboard/allEmployees',
             element: <AllEmployees></AllEmployees>
+          },
+          {
+            path: '/dashboard/allEmployees/:id',
+            element: <EmployeeSalary></EmployeeSalary>,
+            loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
           },
           {
             path: '/dashboard/messages',

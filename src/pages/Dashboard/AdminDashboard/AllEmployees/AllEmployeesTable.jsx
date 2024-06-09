@@ -3,7 +3,7 @@ import useUsersData from '../../../../hooks/useUsersData';
 import { Table } from 'flowbite-react';
 import Swal from 'sweetalert2';
 import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const AllEmployeesTable = () => {
     const axiosSecure = useAxiosPrivate();
@@ -97,6 +97,7 @@ const AllEmployeesTable = () => {
                     <Table.HeadCell>Salary</Table.HeadCell>
                     <Table.HeadCell>Status</Table.HeadCell>
                     <Table.HeadCell>Fire</Table.HeadCell>
+                    <Table.HeadCell>Salary updated</Table.HeadCell>
                 </Table.Head>
                 <Table.Body className="divide-y">
                     {
@@ -108,7 +109,7 @@ const AllEmployeesTable = () => {
                             <Table.Cell>${user?.salary}</Table.Cell>
                             <Table.Cell className='text-center'>{user?.role === 'Employee' ? <button onClick={() => handleHR(user?._id)} className='bg-primary text-white btn px-2 py-1'>Make HR</button> : <b>{user?.role}</b>}</Table.Cell>
                             <Table.Cell>{user?.fired === true ? <p className='text-red-600'>Fired</p> : <button onClick={() => handleFire(user?._id)} className='bg-main text-white btn px-2 py-1'>Fire</button>}</Table.Cell>
-                            <Table.Cell><button className='btn btn-sm bg-gray-200 p-2'>Update salary</button></Table.Cell>
+                            <Table.Cell><Link to={`/dashboard/allEmployees/${user?._id}`}><button className='btn btn-sm bg-gray-200 p-2'>Update salary</button></Link></Table.Cell>
                         </Table.Row>)
                     }
                 </Table.Body>
