@@ -21,7 +21,7 @@ const Login = () => {
 
         const specificUserArray = users.filter(user => user.email === email);
         const specificUser = specificUserArray[0];
-        if (specificUser.fired) {
+        if (specificUser?.fired) {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
