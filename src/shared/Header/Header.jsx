@@ -5,6 +5,7 @@ import { Link, NavLink } from 'react-router-dom';
 import './Header.css';
 import { authContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
     const { user, logoutUser } = useContext(authContext);
@@ -69,7 +70,7 @@ const Header = () => {
                                 <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
                             </Dropdown>
                             <Navbar.Toggle />
-                        </> : <Link to='/login'><button className='btn bg-main text-white px-5 py-2'>Login</button></Link>
+                        </> : <Link to='/login'><button className='btn bg-main text-white px-5 py-2 flex items-center'><FaUser className='mr-1' /> Login</button></Link>
                     }
                 </div>
                 <Navbar.Collapse>

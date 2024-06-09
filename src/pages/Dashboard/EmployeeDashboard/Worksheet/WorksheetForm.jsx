@@ -10,7 +10,7 @@ import useWorksheet from '../../../../hooks/useWorksheet';
 
 const WorksheetForm = () => {
     const { user } = useContext(authContext);
-    const { register, handleSubmit, setValue } = useForm();
+    const { register, handleSubmit, setValue, reset } = useForm();
     const [startDate, setStartDate] = useState(new Date());
     const axiosSecure = useAxiosPrivate();
     const [, refetch] = useWorksheet();
@@ -44,6 +44,7 @@ const WorksheetForm = () => {
                         timer: 1500
                     });
                     refetch();
+                    reset();
                 }
             })
             .catch(error => {

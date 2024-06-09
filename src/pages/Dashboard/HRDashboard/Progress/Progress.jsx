@@ -54,7 +54,7 @@ const Progress = () => {
                     </Dropdown>
                 </div>
             </div>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-scroll h-96">
                 <Table hoverable>
                     <Table.Head>
                         <Table.HeadCell>Employee name</Table.HeadCell>

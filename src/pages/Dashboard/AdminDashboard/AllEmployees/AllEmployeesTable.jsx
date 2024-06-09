@@ -35,7 +35,7 @@ const AllEmployeesTable = () => {
                 const role = specificUser.role;
                 const updatedEmployee = { role };
 
-                axiosSecure.patch(`/users/${specificId}`, updatedEmployee)
+                axiosSecure.put(`/users/${specificId}`, updatedEmployee)
                     .then(res => {
                         if (res.data.modifiedCount > 0) {
                             Swal.fire({
@@ -48,13 +48,24 @@ const AllEmployeesTable = () => {
                         }
                         navigate(0)
                     })
-                Swal.fire({
-                    title: "Make HR",
-                    text: "Successfully done!",
-                    icon: "success"
-                });
             }
         });
+    }
+
+    const handleFire = (id) => {
+        Swal.fire({
+            title: "Do you want to make this employee HR?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Make him HR!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log('fired', id)
+            }
+        })
     }
 
     return (
@@ -74,7 +85,7 @@ const AllEmployeesTable = () => {
                             </Table.Cell>
                             <Table.Cell>{user?.designation}</Table.Cell>
                             <Table.Cell className='text-center'>{user?.role === 'Employee' ? <button onClick={() => handleHR(user?._id)} className='bg-primary text-white btn px-2 py-1'>Make HR</button> : <b>{user?.role}</b>}</Table.Cell>
-                            <Table.Cell><button className='bg-main text-white btn px-2 py-1'>Fire</button></Table.Cell>
+                            <Table.Cell><button onClick={() => handleFire(user?._id)} className='bg-main text-white btn px-2 py-1'>Fire</button></Table.Cell>
                         </Table.Row>)
                     }
                 </Table.Body>

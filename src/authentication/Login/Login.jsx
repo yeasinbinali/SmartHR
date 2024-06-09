@@ -92,11 +92,12 @@ const Login = () => {
                         <label>Password</label><br />
                         <input placeholder='Write your password' type='password' className='border-[1px] border-black w-[100%]' {...register("password")} required />
                     </div>
-                    <input className='btn bg-primary text-white w-full py-2 mt-5' type="submit" />
+                    <input className='btn bg-primary text-white w-full py-2 mt-5 cursor-pointer' type="submit" />
                 </form>
                 <p className='my-5 text-center'>New to SmartHR ? <Link className='text-main' to='/register'>Go to Register</Link></p>
-                <div className='flex justify-center'>
-                    <FcGoogle onClick={handleGoogleSignIn} className='text-3xl' />
+                <div onClick={handleGoogleSignIn} className='flex items-center bg-gray-200 p-2 cursor-pointer'>
+                    <FcGoogle className='text-2xl float-left' />
+                    <p className='text-center w-full mx-auto'>Google sign-in</p>
                 </div>
             </div>
         </div>

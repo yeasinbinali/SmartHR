@@ -4,7 +4,6 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 
 const EmployeeDetails = () => {
     const user = useLoaderData();
-    console.log(user);
     return (
         <div className='mt-5 ml-5'>
             <div className='flex items-center bg-[whitesmoke] p-5 rounded-2xl'>

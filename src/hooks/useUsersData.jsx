@@ -3,9 +3,9 @@ import useAxiosPublic from './useAxiosPublic';
 
 const useUsersData = () => {
     const axiosSecure = useAxiosPublic();
-    const {data: users = [], refetch} = useQuery({
+    const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
-        queryFn: async() => {
+        queryFn: async () => {
             const res = await axiosSecure.get('/users');
             return res.data;
         }

@@ -33,8 +33,9 @@ const Register = () => {
         const designation = data.designation;
         const salary = data.salary;
         const status = 'Not verified';
+        const fired = false
 
-        const userData = { role, name, imageURL, bankAccount, email, designation, salary, status }
+        const userData = { role, name, imageURL, bankAccount, email, designation, salary, status, fired }
 
         createUser(email, password)
             .then(res => {
@@ -73,7 +74,7 @@ const Register = () => {
     }
 
     return (
-        <div className='mt-10 my-20'>
+        <div className='mt-10 my-20 w-[80%] mx-auto'>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <h1 className='text-5xl font-bold text-center mb-10'>Register</h1>
                 <div className='grid grid-cols-2 gap-5'>
@@ -128,7 +129,7 @@ const Register = () => {
                         {errors.password?.type === "pattern" && <p>Password must have one capital letter and one special character(!, @, #, %, &, *)</p>}
                     </div>
                 </div>
-                <input className='btn bg-primary text-white w-full py-2 mt-5' type="submit" />
+                <input className='btn bg-primary text-white w-full py-2 mt-5 cursor-pointer' type="submit" />
             </form>
             <p className='my-5 text-center'>Already have an account ? <Link className='text-main' to='/login'>Login</Link></p>
         </div>
