@@ -35,7 +35,7 @@ const AllEmployeesTable = () => {
                 const role = specificUser.role;
                 const updatedEmployee = { role };
 
-                axiosSecure.put(`/users/${specificId}`, updatedEmployee)
+                axiosSecure.put(`/users/${specificId}/role`, updatedEmployee)
                     .then(res => {
                         if (res.data.modifiedCount > 0) {
                             Swal.fire({
@@ -54,16 +54,36 @@ const AllEmployeesTable = () => {
 
     const handleFire = (id) => {
         Swal.fire({
-            title: "Do you want to make this employee HR?",
+            title: "Do you want to fire this employee?",
             text: "You won't be able to revert this!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, Make him HR!"
+            confirmButtonText: "Yes, want it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                console.log('fired', id)
+                const specificUserArray = employees.filter(user => user._id === id);
+                const specificId = specificUserArray[0]._id;
+
+                let specificUser = specificUserArray[0];
+                specificUser.fired = true;
+                const fired = specificUser.fired;
+                const updatedEmployee = { fired };
+
+                axiosSecure.patch(`/users/${specificId}/fired`, updatedEmployee)
+                    .then(res => {
+                        if (res.data.modifiedCount > 0) {
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "Fired!!!",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                        navigate(0)
+                    })
             }
         })
     }
@@ -74,6 +94,7 @@ const AllEmployeesTable = () => {
                 <Table.Head>
                     <Table.HeadCell>Name</Table.HeadCell>
                     <Table.HeadCell>Designation</Table.HeadCell>
+                    <Table.HeadCell>Salary</Table.HeadCell>
                     <Table.HeadCell>Status</Table.HeadCell>
                     <Table.HeadCell>Fire</Table.HeadCell>
                 </Table.Head>
@@ -84,8 +105,10 @@ const AllEmployeesTable = () => {
                                 {user?.name}
                             </Table.Cell>
                             <Table.Cell>{user?.designation}</Table.Cell>
+                            <Table.Cell>${user?.salary}</Table.Cell>
                             <Table.Cell className='text-center'>{user?.role === 'Employee' ? <button onClick={() => handleHR(user?._id)} className='bg-primary text-white btn px-2 py-1'>Make HR</button> : <b>{user?.role}</b>}</Table.Cell>
-                            <Table.Cell><button onClick={() => handleFire(user?._id)} className='bg-main text-white btn px-2 py-1'>Fire</button></Table.Cell>
+                            <Table.Cell>{user?.fired === true ? <p className='text-red-600'>Fired</p> : <button onClick={() => handleFire(user?._id)} className='bg-main text-white btn px-2 py-1'>Fire</button>}</Table.Cell>
+                            <Table.Cell><button className='btn btn-sm bg-gray-200 p-2'>Update salary</button></Table.Cell>
                         </Table.Row>)
                     }
                 </Table.Body>

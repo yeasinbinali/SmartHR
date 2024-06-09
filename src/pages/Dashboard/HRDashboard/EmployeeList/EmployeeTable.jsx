@@ -35,7 +35,7 @@ const EmployeeTable = () => {
                 const status = specificUser.status;
                 const updatedUser = { status };
 
-                axiosSecure.patch(`/users/${specificId}`, updatedUser)
+                axiosSecure.patch(`/users/${specificId}/status`, updatedUser)
                     .then(res => {
                         if (res.data.modifiedCount > 0) {
                             Swal.fire({
