@@ -32,6 +32,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <></>,
     children: [
       {
         path: '/',
@@ -74,12 +75,12 @@ const router = createBrowserRouter([
           {
             path: '/dashboard/employeeList/:id',
             element: <EmployeeDetails></EmployeeDetails>,
-            loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
+            loader: ({ params }) => fetch(`https://smart-hr-server.vercel.app/users/${params.id}`)
           },
           {
             path: '/dashboard/employeeList/payment/:id',
             element: <Payment></Payment>,
-            loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
+            loader: ({ params }) => fetch(`https://smart-hr-server.vercel.app/users/${params.id}`)
           },
           {
             path: '/dashboard/progress',
@@ -93,7 +94,7 @@ const router = createBrowserRouter([
           {
             path: '/dashboard/allEmployees/:id',
             element: <EmployeeSalary></EmployeeSalary>,
-            loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
+            loader: ({ params }) => fetch(`https://smart-hr-server.vercel.app/users/${params.id}`)
           },
           {
             path: '/dashboard/messages',
