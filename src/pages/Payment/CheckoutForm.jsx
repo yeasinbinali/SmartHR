@@ -2,16 +2,17 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import Swal from 'sweetalert2';
+import moment from 'moment';
+import { useNavigate } from 'react-router-dom';
 
 const CheckoutForm = ({ user }) => {
-    console.log(user);
     const stripe = useStripe();
     const elements = useElements();
     const [clientSecret, setClientSecret] = useState('');
     const [transactionId, setTransactionId] = useState('');
     const axiosSecure = useAxiosPrivate();
     const salary = user.salary;
-    console.log(salary);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (salary > 0) {
@@ -19,7 +20,6 @@ const CheckoutForm = ({ user }) => {
                 price: salary
             })
                 .then(res => {
-                    console.log(res.data.clientSecret);
                     setClientSecret(res.data.clientSecret);
                 })
         }
@@ -81,13 +81,14 @@ const CheckoutForm = ({ user }) => {
                         email: user?.email,
                         price: salary,
                         transactionId: paymentIntent.id,
-                        date: new Date(),
+                        date: moment().format("MMM Do YY"),
+                        salaryMoth: moment().format("MMM"),
                         userId: user._id,
-                        status: 'pending',
+                        status: 'succeeded',
                     };
 
                     const res = await axiosSecure.post('/payment', payment);
-                    if (res.data?.data?.insertedId) {
+                    if (res.data?.insertedId) {
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
@@ -96,10 +97,15 @@ const CheckoutForm = ({ user }) => {
                             timer: 1500
                         })
                     }
+                    navigate('/dashboard/employeeList')
                 }
             }
         } catch (err) {
-            console.error('Error confirming card payment:', err);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: err.type
+            })
         }
     };
     return (
@@ -124,7 +130,7 @@ const CheckoutForm = ({ user }) => {
                 Pay
             </button>
             {
-                transactionId && <p className='text-primary'>Your transaction id: {transactionId}</p>
+                transactionId && <p>Your transaction id: <span className='text-primary'>{transactionId}</span></p>
             }
         </form>
     );
