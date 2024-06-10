@@ -4,17 +4,22 @@ import useUsersData from '../../../../hooks/useUsersData';
 import Swal from 'sweetalert2';
 import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import { Link, useNavigate } from 'react-router-dom';
+import useEmployeeSalary from '../../../../hooks/useEmployeeSalary';
 
 const EmployeeTable = () => {
     const [employees, setEmployees] = useState([]);
     const [users] = useUsersData();
     const axiosSecure = useAxiosPrivate();
     const navigate = useNavigate();
+    const [payment] = useEmployeeSalary();
 
     useEffect(() => {
         const filterEmployees = users.filter(user => user.role === 'Employee');
         setEmployees(filterEmployees);
     }, [users])
+
+    const paymentEmployee = payment.map(transaction => transaction.email);
+
 
     const handleNotVerified = (id) => {
         Swal.fire({
@@ -87,7 +92,7 @@ const EmployeeTable = () => {
                                 user.status === 'Not verified' ? <Table.Cell>
                                     <button disabled className='btn btn-sm bg-[whitesmoke] text-black px-2 py-1'>Pay</button>
                                 </Table.Cell> : <Table.Cell>
-                                    <Link to={`/dashboard/employeeList/payment/${user._id}`}><button className='btn btn-sm bg-main text-secondary px-2 py-1'>Pay</button></Link>
+                                    {paymentEmployee.includes(user.email) ? <p className='text-main'>Paid</p> : <Link to={`/dashboard/employeeList/payment/${user._id}`}><button className='btn btn-sm bg-main text-secondary px-2 py-1'>Pay</button></Link>}
                                 </Table.Cell>
                             }
                             <Link to={`/dashboard/employeeList/${user._id}`}><Table.Cell><button className='btn btn-sm bg-primary text-secondary px-2 py-1'>Details</button></Table.Cell></Link>
