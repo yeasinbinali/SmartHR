@@ -20,6 +20,7 @@ const PaymentHistory = () => {
         <div className='mt-5 ml-5 mb-20'>
             <PrivateContainerHeader title={"Payment History"}></PrivateContainerHeader>
             <div>
+                {paymentHistory.length === 0 && <p>No payment history</p>}
                 {paymentHistory.map(history => <div className="overflow-x-auto">
                     <Table>
                         <Table.Head>

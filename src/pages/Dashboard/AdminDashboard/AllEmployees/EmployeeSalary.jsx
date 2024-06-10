@@ -42,7 +42,7 @@ const EmployeeSalary = () => {
     return (
         <div className='mt-5 ml-5 mb-20'>
             <PrivateContainerHeader title={`${user.name}'s current salary $${user.salary}`}></PrivateContainerHeader>
-            <form onSubmit={handleSubmit(onSubmit)} className='bg-[whitesmoke] w-[50%] py-10 px-10 lg:px-16'>
+            <form onSubmit={handleSubmit(onSubmit)} className='bg-[whitesmoke] w-[100%] md:w-[50%] lg:w-[100%] py-10 px-10 lg:px-16'>
                 <div className='w-full mx-auto'>
                     <label>Full name</label>
                     <input required placeholder={user.name} readOnly className='border-[1px] border-black w-[100%] p-1' />

@@ -24,6 +24,7 @@ import Messages from './pages/Dashboard/AdminDashboard/Messages/Messages.jsx';
 import Contact from './pages/Contact/Contact.jsx';
 import EmployeeSalary from './pages/Dashboard/AdminDashboard/AllEmployees/EmployeeSalary.jsx';
 import Payment from './pages/Payment/Payment.jsx';
+import ErrorContainer from './pages/ErrorContainer/ErrorContainer.jsx';
 
 
 const queryClient = new QueryClient()
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    errorElement: <></>,
+    errorElement: <ErrorContainer></ErrorContainer>,
     children: [
       {
         path: '/',
@@ -53,6 +54,7 @@ const router = createBrowserRouter([
       {
         path: '/dashboard',
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        errorElement: <ErrorContainer></ErrorContainer>,
         children: [
           {
             path: '/dashboard',

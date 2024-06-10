@@ -23,11 +23,11 @@ const EmployeeDetails = () => {
             </div>
             <div className='mt-10'>
                 {specificUser.length === 0 ? <p>Salary has not been given yet</p> : <BarChart width={350} height={300} data={specificUser}>
-                    <XAxis dataKey="salaryMoth" stroke="#8884d8" />
+                    <XAxis dataKey="salaryMoth" stroke="#FC6075" />
                     <YAxis />
                     <Tooltip />
                     <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                    <Bar dataKey="price" fill="#8884d8" barSize={30} />
+                    <Bar dataKey="price" fill="#FC6075" barSize={30} />
                 </BarChart>}
             </div>
         </div>
