@@ -23,6 +23,7 @@ import AllEmployees from './pages/Dashboard/AdminDashboard/AllEmployees/AllEmplo
 import Messages from './pages/Dashboard/AdminDashboard/Messages/Messages.jsx';
 import Contact from './pages/Contact/Contact.jsx';
 import EmployeeSalary from './pages/Dashboard/AdminDashboard/AllEmployees/EmployeeSalary.jsx';
+import Payment from './pages/Payment/Payment.jsx';
 
 
 const queryClient = new QueryClient()
@@ -73,6 +74,11 @@ const router = createBrowserRouter([
           {
             path: '/dashboard/employeeList/:id',
             element: <EmployeeDetails></EmployeeDetails>,
+            loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
+          },
+          {
+            path: '/dashboard/employeeList/payment/:id',
+            element: <Payment></Payment>,
             loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
           },
           {

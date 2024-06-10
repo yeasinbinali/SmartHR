@@ -87,7 +87,7 @@ const EmployeeTable = () => {
                                 user.status === 'Not verified' ? <Table.Cell>
                                     <button disabled className='btn btn-sm bg-[whitesmoke] text-black px-2 py-1'>Pay</button>
                                 </Table.Cell> : <Table.Cell>
-                                    <button className='btn btn-sm bg-main text-secondary px-2 py-1'>Pay</button>
+                                    <Link to={`/dashboard/employeeList/payment/${user._id}`}><button className='btn btn-sm bg-main text-secondary px-2 py-1'>Pay</button></Link>
                                 </Table.Cell>
                             }
                             <Link to={`/dashboard/employeeList/${user._id}`}><Table.Cell><button className='btn btn-sm bg-primary text-secondary px-2 py-1'>Details</button></Table.Cell></Link>

@@ -3,7 +3,7 @@
 <p>Admin username: <b>smart@admin.com</b></p>
 <p>Admin password: <b>face12A!</b></p>
 
-[Live Site]()
+[Live Site](https://smart-hr-site.web.app)
 
 ### Features 
 <ul>
