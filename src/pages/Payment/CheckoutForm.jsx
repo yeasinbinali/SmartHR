@@ -12,6 +12,8 @@ const CheckoutForm = ({ user }) => {
     const [transactionId, setTransactionId] = useState('');
     const axiosSecure = useAxiosPrivate();
     const salary = user.salary;
+    const name = user.name;
+    const designation = user.designation;
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -51,7 +53,11 @@ const CheckoutForm = ({ user }) => {
         });
 
         if (error) {
-            console.log('[error]', error);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: error.message
+            })
             return; // Exit if there's an error creating the payment method
         } else {
             console.log('[PaymentMethod]', paymentMethod);
@@ -78,6 +84,8 @@ const CheckoutForm = ({ user }) => {
 
                     // Save the payment in the database
                     const payment = {
+                        name: name,
+                        designation: designation,
                         email: user?.email,
                         price: salary,
                         transactionId: paymentIntent.id,
@@ -110,6 +118,7 @@ const CheckoutForm = ({ user }) => {
     };
     return (
         <form onSubmit={handleSubmit}>
+            <p className='my-5'>Card number : 4242 4242 4242 4242</p>
             <CardElement
                 options={{
                     style: {
