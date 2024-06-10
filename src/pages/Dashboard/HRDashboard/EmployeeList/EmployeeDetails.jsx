@@ -22,15 +22,13 @@ const EmployeeDetails = () => {
                 </div>
             </div>
             <div className='mt-10'>
-                <BarChart width={350} md:width={600} height={300}>
-                    {specificUser.map(employee => <>
-                        <XAxis dataKey={employee.price} stroke="#8884d8" />
-                        <YAxis />
-                        <Tooltip />
-                        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                        <Bar dataKey="uv" fill="#8884d8" barSize={30} />
-                    </>)}
-                </BarChart>
+                {specificUser.length === 0 ? <p>Salary has not been given yet</p> : <BarChart width={350} height={300} data={specificUser}>
+                    <XAxis dataKey="salaryMoth" stroke="#8884d8" />
+                    <YAxis />
+                    <Tooltip />
+                    <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                    <Bar dataKey="price" fill="#8884d8" barSize={30} />
+                </BarChart>}
             </div>
         </div>
     );
