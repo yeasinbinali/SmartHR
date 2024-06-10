@@ -28,14 +28,14 @@ const Header = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 logoutUser()
-                    .then(() => {})
+                    .then(() => { })
                     .catch((error) => {
                         Swal.fire({
                             icon: "error",
                             title: "Oops...",
                             text: "Something went wrong!",
                             footer: `${error.message}`
-                          });
+                        });
                     })
                 Swal.fire({
                     title: "Done",
@@ -47,37 +47,36 @@ const Header = () => {
     }
 
     return (
-        <div>
-            <Navbar className='bg-gray-100 py-5' fluid rounded>
-                <Navbar.Brand>
-                    <img src={logo} alt="logo" />
-                </Navbar.Brand>
-                <div className="flex md:order-2">
-                    {
-                        user?.email ? <>
-                            <Dropdown
-                                arrowIcon={false}
-                                inline
-                                label={
-                                    <Avatar alt="User settings" img={user.photoURL} rounded />
-                                }
-                            >
-                                <Dropdown.Header>
-                                    <span className="block text-sm">{user.displayName}</span>
-                                    <span className="block truncate text-sm font-medium">{user.email}</span>
-                                </Dropdown.Header>
-                                <Dropdown.Divider />
-                                <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
-                            </Dropdown>
-                            <Navbar.Toggle />
-                        </> : <Link to='/login'><button className='btn bg-main text-white px-5 py-2 flex items-center'><FaUser className='mr-1' /> Login</button></Link>
-                    }
-                </div>
-                <Navbar.Collapse>
-                    {nav}
-                </Navbar.Collapse>
-            </Navbar>
-        </div>
+        <Navbar fluid rounded>
+            <Navbar.Brand>
+                <img src={logo} alt="logo" />
+            </Navbar.Brand>
+            <div className="flex items-center md:order-2">
+                {
+                    user?.email ? <>
+                        <Dropdown
+                            arrowIcon={false}
+                            inline
+                            label={
+                                <Avatar alt="User settings" img={user.photoURL} rounded />
+                            }
+                        >
+                            <Dropdown.Header>
+                                <span className="block text-sm">{user.displayName}</span>
+                                <span className="block truncate text-sm font-medium">{user.email}</span>
+                            </Dropdown.Header>
+                            <Dropdown.Divider />
+                            <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
+                        </Dropdown>
+
+                    </> : <Link to='/login'><FaUser className='mr-1 text-2xl' /></Link>
+                }
+                <Navbar.Toggle />
+            </div>
+            <Navbar.Collapse>
+                {nav}
+            </Navbar.Collapse>
+        </Navbar>
     );
 };
 

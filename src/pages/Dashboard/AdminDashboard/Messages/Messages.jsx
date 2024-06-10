@@ -6,9 +6,9 @@ const Messages = () => {
     const [messages] = useMessage();
     console.log(messages);
     return (
-        <div className='mt-5 ml-5'>
+        <div className='mt-5 ml-5 mb-20'>
             <PrivateContainerHeader title="All Messages from Employees and HR"></PrivateContainerHeader>
-            <div className='grid grid-cols-3 gap-10'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                 {messages.map(message => <div className='h-40 overflow-y-scroll border-[1px] border-black px-5 py-2'>
                     <p>Name: {message.name}</p>
                     <p className='my-2'>Email: <span className='font-bold'>{message.email}</span></p>

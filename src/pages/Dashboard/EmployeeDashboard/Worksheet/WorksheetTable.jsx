@@ -17,9 +17,6 @@ const WorksheetTable = () => {
                             <Table.HeadCell>Tasks</Table.HeadCell>
                             <Table.HeadCell>Work Houred</Table.HeadCell>
                             <Table.HeadCell>Date</Table.HeadCell>
-                            <Table.HeadCell>
-                                <span className="sr-only">Edit</span>
-                            </Table.HeadCell>
                         </Table.Head>
                         <Table.Body className="divide-y">
                             {
@@ -29,11 +26,6 @@ const WorksheetTable = () => {
                                     </Table.Cell>
                                     <Table.Cell>{work.workHoured} hour</Table.Cell>
                                     <Table.Cell>{work.date.slice(0, 10)}</Table.Cell>
-                                    <Table.Cell>
-                                        <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
-                                            Edit
-                                        </a>
-                                    </Table.Cell>
                                 </Table.Row>)
                             }
                         </Table.Body>

@@ -89,13 +89,13 @@ const Login = () => {
     }
 
     return (
-        <div className='flex justify-between items-center gap-10 mt-10 mb-20'>
-            <div className='w-[40%] mx-auto'>
+        <div className='md:flex justify-between items-center gap-10 mt-10 mb-20'>
+            <div className='md:w-[40%] mx-auto'>
                 <img src="https://i.ibb.co/1rHpdYk/user-verification-unauthorized-access-prevention-private-account-authentication-cyber-security-peopl.jpg" alt="" />
             </div>
-            <div className='w-[50%] mx-auto px-20'>
+            <div className='md:w-[50%] mx-auto md:px-20'>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <h1 className='text-5xl font-bold text-center mb-10'>Login</h1>
+                    <h1 className='text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-10'>Login</h1>
                     <div className='w-full mx-auto'>
                         <label>Email</label><br />
                         <input placeholder='Write your email' type='email' className='border-[1px] border-black w-[100%]' {...register("email")} required />

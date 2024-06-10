@@ -74,11 +74,11 @@ const Register = () => {
     }
 
     return (
-        <div className='mt-10 my-20 w-[80%] mx-auto'>
+        <div className='mt-10 my-20 md:w-[80%] mx-auto'>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <h1 className='text-5xl font-bold text-center mb-10'>Register</h1>
-                <div className='grid grid-cols-2 gap-5'>
-                    <div className='w-full mx-auto'>
+                <h1 className='text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-10'>Register</h1>
+                <div className='md:grid grid-cols-2 gap-5'>
+                    <div className='w-full mx-auto mb-5 md:mb-0'>
                         <label>Role</label><br />
                         <select required className='border-[1px] border-black w-[100%]' {...register("role")}>
                             <option value="Employee">Employee</option>
@@ -86,11 +86,11 @@ const Register = () => {
                             <option disabled value="Admin">Admin</option>
                         </select>
                     </div>
-                    <div className='w-full mx-auto'>
+                    <div className='w-full mx-auto mb-5 md:mb-0'>
                         <label>Full name</label><br />
                         <input required placeholder='Your name' type='text' className='border-[1px] border-black w-[100%]' {...register("name")} />
                     </div>
-                    <div className='w-full mx-auto'>
+                    <div className='w-full mx-auto mb-5 md:mb-0'>
                         <label>Bank Account No</label><br />
                         <input required placeholder='Your bank account' type='number' className='border-[1px] border-black w-[100%]' {...register("bankAccount", {
                             maxLength: 6,
@@ -99,15 +99,15 @@ const Register = () => {
                         {errors.bankAccount?.type === "maxLength" && <p>Max length 6</p>}
                         {errors.bankAccount?.type === "minLength" && <p>Min length 5</p>}
                     </div>
-                    <div className='w-full mx-auto'>
+                    <div className='w-full mx-auto mb-5 md:mb-0'>
                         <label>Salary</label><br />
                         <input required placeholder='Your Salary' type='number' className='border-[1px] border-black w-[100%]' {...register("salary")} />
                     </div>
-                    <div className='w-full mx-auto'>
+                    <div className='w-full mx-auto mb-5 md:mb-0'>
                         <label>Photo</label><br />
                         <input required placeholder='Your Photo' type='file' className='border-[1px] border-black w-[100%]' {...register("photo")} />
                     </div>
-                    <div className='w-full mx-auto'>
+                    <div className='w-full mx-auto mb-5 md:mb-0'>
                         <label>Designation</label><br />
                         <select required className='border-[1px] border-black w-[100%]' {...register("designation")}>
                             <option value="Sales assistant">Sales assistant</option>
@@ -115,11 +115,11 @@ const Register = () => {
                             <option value="Digital marketer">Digital marketer</option>
                         </select>
                     </div>
-                    <div className='w-full mx-auto'>
+                    <div className='w-full mx-auto mb-5 md:mb-0'>
                         <label>Email</label><br />
                         <input required placeholder='Write your email' type='email' className='border-[1px] border-black w-[100%]' {...register("email")} />
                     </div>
-                    <div className='w-full mx-auto'>
+                    <div className='w-full mx-auto mb-5 md:mb-0'>
                         <label>Password</label><br />
                         <input required placeholder='Write your password' type='password' className='border-[1px] border-black w-[100%]' {...register("password", {
                             minLength: 6,

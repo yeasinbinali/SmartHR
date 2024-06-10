@@ -37,11 +37,11 @@ const Contact = () => {
             })
     }
     return (
-        <div className='flex justify-between items-center gap-10 mt-10 mb-20'>
-            <img className='w-[50%]' src={contactImage} alt="contact" />
-            <div className='w-[50%]'>
+        <div className='md:flex justify-between items-center gap-10 mt-10 mb-20'>
+            <img className='md:w-[50%]' src={contactImage} alt="contact" />
+            <div className='md:w-[50%]'>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <h1 className='text-5xl font-bold text-center mb-10'>Contact with <span className='text-main border-b-4 border-primary font-bold'>Admin</span></h1>
+                    <h1 className='text-3xl md:text-4xl lg:text-5xl font-bold text-center mt-5 md:mt-0 md:mb-10'>Contact with <span className='text-main border-b-4 border-primary font-bold'>Admin</span></h1>
                     <div className='w-full mx-auto mt-5'>
                         <label>To</label><br />
                         <input placeholder='smart@admin.com' readOnly type='email' className='border-[1px] border-black w-[100%]' required />

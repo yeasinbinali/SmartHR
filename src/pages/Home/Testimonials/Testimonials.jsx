@@ -30,7 +30,7 @@ const Testimonials = () => {
             <Heading title="Testimonials"></Heading>
             <div>
                 <Swiper
-                    slidesPerView={4}
+                    slidesPerView={2}
                     centeredSlides={true}
                     spaceBetween={30}
                     grabCursor={true}
@@ -43,15 +43,15 @@ const Testimonials = () => {
                     {
                         testimonials.map(testimonial => <SwiperSlide className='flex flex-col justify-between text-left mb-16'>
                             <p>"{testimonial.comment}"</p>
-                            <div className='flex justify-between items-center gap-3 mt-5'>
-                                <div className='flex items-center gap-3'>
+                            <div className='md:flex justify-between items-center gap-3 mt-5'>
+                                <div className='md:flex items-center gap-3'>
                                     <img style={{ width: '60px', height: '60px' }} className='rounded-full' src={testimonial.user_image} alt="" />
                                     <div>
                                         <p>{testimonial.name}</p>
                                         <small>{testimonial.country}</small>
                                     </div>
                                 </div>
-                                <div>
+                                <div className='mt-1 md:mt-0'>
                                     <p className='flex items-center gap-1'><FaStar/>{testimonial.rating}</p>
                                 </div>
                             </div>

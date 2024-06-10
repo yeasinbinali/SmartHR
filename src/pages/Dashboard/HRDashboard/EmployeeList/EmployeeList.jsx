@@ -4,7 +4,7 @@ import EmployeeTable from './EmployeeTable';
 
 const EmployeeList = () => {
     return (
-        <div className='mt-5 ml-5'>
+        <div className='mt-5 ml-5 mb-20'>
             <PrivateContainerHeader title="Employee List"></PrivateContainerHeader>
             <EmployeeTable></EmployeeTable>
         </div>

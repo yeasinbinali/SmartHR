@@ -33,7 +33,7 @@ const Progress = () => {
     });
 
     return (
-        <div className='mt-5 ml-5'>
+        <div className='mb-20 mt-5 ml-5'>
             <div className='flex'>
                 <div className='bg-main mb-10'>
                     <Dropdown label={selectedEmployee ? selectedEmployee : 'Employee'} placement="bottom">
@@ -60,7 +60,7 @@ const Progress = () => {
                         <Table.HeadCell>Employee name</Table.HeadCell>
                         <Table.HeadCell>Email</Table.HeadCell>
                         <Table.HeadCell>Task</Table.HeadCell>
-                        <Table.HeadCell>WorkHoured</Table.HeadCell>
+                        <Table.HeadCell>Work Houred</Table.HeadCell>
                         <Table.HeadCell>Date</Table.HeadCell>
                     </Table.Head>
                     <Table.Body className="divide-y">

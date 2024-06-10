@@ -18,7 +18,7 @@ const LatestNews = () => {
     return (
         <div className='mb-20'>
             <Heading title="Latest News" description="Stay informed with our latest news roundup! Get concise summaries of breaking stories, top headlines, and updates on global events."></Heading>
-            <div className='flex justify-between items-center gap-10'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                 {
                     latestNews.map(news => <GridCard name={news.name} description={news.description} image={news.image}></GridCard>)
                 }

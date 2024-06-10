@@ -2,7 +2,7 @@ import React from 'react';
 
 const CareerCard = ({ image, title, description, buttonTitle }) => {
     return (
-        <div className='w-[30%] mx-auto text-center bg-[whitesmoke]'>
+        <div className='w-[100%] md:w-[60%] lg:w-[30%] mx-auto text-center bg-[whitesmoke] mt-5 md:mt-0'>
             <img className='w-[100%] mx-auto' src={image} alt="career" />
             <div className='px-5'>
                 <h1 className='text-2xl font-bold mt-2'>{title}</h1>
